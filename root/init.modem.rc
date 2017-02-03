@@ -26,23 +26,20 @@ on post-fs-data
     chown ccci ccci /dev/ccci_uem_tx
 
     
-service gsm0710muxd /system/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
+service gsm0710muxd /system/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m
     class core
     user root
     group radio cache inet misc ccci
-    disabled
 
-service gsm0710muxdmd2 /system/bin/gsm0710muxdmd2 -s /dev/ccci2_tty0 -f 512 -n 8 -m basic
+service gsm0710muxdmd2 /system/bin/gsm0710muxdmd2 -s /dev/ccci2_tty0 -f 512 -n 8 -m
     class core
     user root
     group radio cache inet misc ccci
-    disabled
 
 service muxreport-daemon /system/bin/muxreport
     class core
     user radio
     group radio cache inet misc ccci
-    disabled
     oneshot
 
 service ril-daemon /system/bin/rild
@@ -57,7 +54,6 @@ service ril-daemon /system/bin/rild
     socket rild-atci stream 660 root radio
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw log ccci system
-    disabled
 
 service ril-daemon-md2 /system/bin/rildmd2
     class core
@@ -71,11 +67,9 @@ service ril-daemon-md2 /system/bin/rildmd2
     socket rild-atci-md2 stream 660 root radio
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw log ccci system
-    disabled
 
 service md_minilog_util /system/bin/md_minilog_util
     user radio
-    disabled
     oneshot
 
 #
@@ -122,7 +116,6 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
 #Add by T.Zh for ppp daemon
 service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
     user root
-    disabled 
     oneshot
 
 #
